@@ -10,7 +10,7 @@ public class AppStart
     {
         System.out.println( "Hello World!" );
         SampleMain sm = new SampleMain();
-        //Print the sum.
+        //Print the sum...
         System.out.println(sm.add());
     }
 }
