@@ -1,0 +1,14 @@
+{
+	"name": "DestinationDataset_xo4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CosmosDbMongoDbApi1",
+			"type": "LinkedServiceReference"
+		},
+		"type": "CosmosDbMongoDbApiCollection",
+		"typeProperties": {
+			"collection": "mscicdmscollection"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

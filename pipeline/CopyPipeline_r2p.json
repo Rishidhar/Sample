@@ -1,0 +1,146 @@
+{
+	"name": "CopyPipeline_r2p",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_r2p",
+				"type": "Copy",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "cdmscontainer/SampleDaily_20181207.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "mscicdmscollection"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "BlobSource",
+						"recursive": false
+					},
+					"sink": {
+						"type": "CosmosDbMongoDbApiSink",
+						"writeBatchTimeout": "00:30:00",
+						"writeBatchSize": 10000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"dataIntegrationUnits": 0,
+					"translator": {
+						"type": "TabularTranslator",
+						"schemaMapping": {
+							"Prop_0": "_id['$oid']",
+							"Prop_1": "STATUS",
+							"Prop_2": "ISIN",
+							"Prop_3": "INST_TYPE",
+							"Prop_4": "TYPE_CODE",
+							"Prop_5": "ID",
+							"Prop_6": "NAME",
+							"Prop_7": "POS_UNIT",
+							"Prop_8": "PORTFOLIO",
+							"Prop_9": "SECTOR",
+							"Prop_10": "ISSUER",
+							"Prop_11": "COUNTERPARTY",
+							"Prop_12": "COUNTRY_OF_RISK",
+							"Prop_13": "CURR",
+							"Prop_14": "SPOT",
+							"Prop_15": "COST_OF_CARRY",
+							"Prop_16": "CASHFLOW",
+							"Prop_17": "STRIKE",
+							"Prop_18": "CONTRACT_SIZE",
+							"Prop_19": "ISSUE_DATE",
+							"Prop_20": "MATURITY",
+							"Prop_21": "CALL",
+							"Prop_22": "VOLATILITY",
+							"Prop_23": "UNDERLYING",
+							"Prop_24": "GOVERNMENT_BOND",
+							"Prop_25": "COUPON_RATE",
+							"Prop_26": "LAST_REG_COUP_DATE",
+							"Prop_27": "ODD_FIRST_COUP",
+							"Prop_28": "ODD_LAST_COUP",
+							"Prop_29": "ODD_FIRST_COUP_RATE",
+							"Prop_30": "TERM",
+							"Prop_31": "BUSINESS_DAY_RULE",
+							"Prop_32": "FLOAT_REF_IDX",
+							"Prop_33": "SPREAD",
+							"Prop_34": "LAST_RESET_RATE",
+							"Prop_35": "NOTIONAL",
+							"Prop_36": "UNDERL_MATURITY",
+							"Prop_37": "UNDERL_ENTITIES",
+							"Prop_38": "COMP_WEIGHT",
+							"Prop_39": "STRUCTURED_CASHFLOW",
+							"Prop_40": "REF_TYPE",
+							"Prop_41": "SWAP_NOTIONAL",
+							"Prop_42": "FIX_COUP_DATE",
+							"Prop_43": "PREMIUM_START",
+							"Prop_44": "PREMIUM_END",
+							"Prop_45": "NOTIONAL_START",
+							"Prop_46": "NOTIONAL_END",
+							"Prop_47": "EXERCISE_SCHEDULE",
+							"Prop_48": "PUTABLE",
+							"Prop_49": "CORRELATION",
+							"Prop_50": "CONV_PRICE",
+							"Prop_51": "CONV_START_DATE",
+							"Prop_52": "CONV_END_DATE",
+							"Prop_53": "REDEMPTION_BARRIER",
+							"Prop_54": "CTD_BOND",
+							"Prop_55": "EURO_VALUE",
+							"Prop_56": "KAG_FX",
+							"Prop_57": "RECOVERY_RATE",
+							"Prop_58": "AMORTIZING",
+							"Prop_59": "RATING",
+							"Prop_60": "FACTOR",
+							"Prop_61": "INFO",
+							"Prop_62": "PREMIUM",
+							"Prop_63": "CALLABLE",
+							"Prop_64": "STRIKE_BOND_CALL",
+							"Prop_65": "REDEMPTION_REFERENCE",
+							"Prop_66": "CONVERTIBLE_AFTER_CALL",
+							"Prop_67": "CALL_DATE",
+							"Prop_68": "CALL_TYPE",
+							"Prop_69": "EXCHANGEABLE",
+							"Prop_70": "NOTIONAL_PER_BOND",
+							"Prop_71": "BARRIER",
+							"Prop_72": "BARRIER_HIT",
+							"Prop_73": "REBATE",
+							"Prop_74": "PUT_TYPE",
+							"Prop_75": "WAL",
+							"Prop_76": "POOLFACTOR",
+							"Prop_77": "FIXINGS_SO_FAR",
+							"Prop_78": "FIXINGS_TOTAL",
+							"Prop_79": "FIXING_PERIOD",
+							"Prop_80": "FIXINGS",
+							"Prop_81": "DIGITAL",
+							"Prop_82": "DIGITAL_PAYOFF",
+							"Prop_83": "VV_NAME",
+							"Prop_84": "OPTION_SCHEDULE"
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_r2p",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_r2p",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
