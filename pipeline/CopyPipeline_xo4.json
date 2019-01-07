@@ -158,6 +158,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"typeProperties": {
+					"command": "RENAME SampleDaily_20181207.csv SampleDaily_20181207_processed.csv",
+					"resourceLinkedService": {
+						"referenceName": "AzureBlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "cdmscontainer"
+				},
 				"linkedServiceName": {
 					"referenceName": "AzureBatch2",
 					"type": "LinkedServiceReference"
