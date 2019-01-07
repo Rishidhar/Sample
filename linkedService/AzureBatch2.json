@@ -1,0 +1,20 @@
+{
+	"name": "AzureBatch2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureBatch",
+		"typeProperties": {
+			"accountName": "cdmsbatch",
+			"accessKey": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"batchUri": "https://cdmsbatch.centralus.batch.azure.com",
+			"poolName": "12345",
+			"linkedServiceName": {
+				"referenceName": "AzureBlobStorage1",
+				"type": "LinkedServiceReference"
+			}
+		}
+	}
+}
