@@ -13,7 +13,7 @@
 					"secureInput": false
 				},
 				"typeProperties": {
-					"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
+					"url": "https://cdmsstorageaccnt.file.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-01-10T22:57:46Z&st=2019-01-10T14:57:46Z&spr=https&sig=jrqQck0MWPe1fGdDjnSHRekznLXIcaaxvep898HbXdI%3D",
 					"method": "GET"
 				}
 			},
