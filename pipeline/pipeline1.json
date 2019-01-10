@@ -13,35 +13,8 @@
 					"secureInput": false
 				},
 				"typeProperties": {
-					"url": "https://cdmsstorageaccnt.file.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-01-10T22:57:46Z&st=2019-01-10T14:57:46Z&spr=https&sig=jrqQck0MWPe1fGdDjnSHRekznLXIcaaxvep898HbXdI%3D",
+					"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
 					"method": "GET"
-				}
-			},
-			{
-				"name": "Azure Function1",
-				"type": "AzureFunctionActivity",
-				"dependsOn": [
-					{
-						"activity": "Web1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"typeProperties": {
-					"functionName": "ftp",
-					"method": "GET"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureFunction1",
-					"type": "LinkedServiceReference"
 				}
 			}
 		]
