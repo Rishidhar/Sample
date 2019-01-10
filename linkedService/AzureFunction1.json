@@ -1,0 +1,14 @@
+{
+	"name": "AzureFunction1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "AzureFunction",
+		"typeProperties": {
+			"functionAppUrl": "https://msciftp.azurewebsites.net",
+			"functionKey": {
+				"type": "SecureString",
+				"value": "**********"
+			}
+		}
+	}
+}
