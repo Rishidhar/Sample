@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "cdmsdatafact"
+		},
+		"AzureBatch1_accessKey": {
+			"value": ""
+		},
+		"AzureBatch2_accessKey": {
+			"value": ""
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
+		"CosmosDbMongoDbApi1_connectionString": {
+			"value": ""
+		},
+		"SourceDataset_0al_properties_typeProperties_fileName": {
+			"value": "SampleDaily_20181207.csv"
+		},
+		"SourceDataset_0al_properties_typeProperties_folderPath": {
+			"value": "cdmscontainer"
+		},
+		"SourceDataset_r2p_properties_typeProperties_fileName": {
+			"value": "SampleDaily_20181207.csv"
+		},
+		"SourceDataset_r2p_properties_typeProperties_folderPath": {
+			"value": "cdmscontainer"
+		},
+		"SourceDataset_xo4_properties_typeProperties_fileName": {
+			"value": "SampleDaily_20181207.csv"
+		},
+		"SourceDataset_xo4_properties_typeProperties_folderPath": {
+			"value": "cdmscontainer"
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"value": "cdmsbatch"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"value": "https://cdmsbatch.centralus.batch.azure.com"
+		},
+		"AzureBatch2_properties_typeProperties_accountName": {
+			"value": "cdmsbatch"
+		},
+		"AzureBatch2_properties_typeProperties_batchUri": {
+			"value": "https://cdmsbatch.centralus.batch.azure.com"
+		},
+		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
+			"value": "cdmsDB"
+		}
+	}
+}
