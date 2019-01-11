@@ -1883,11 +1883,9 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"url": "https://msciftp.azurewebsites.net/api/ftp",
+							"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
 							"method": "GET",
-							"headers": {
-								"fileName": "SampleFile.csv"
-							}
+							"headers": {}
 						}
 					}
 				],
