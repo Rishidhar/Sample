@@ -27,6 +27,22 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'CosmosDbMongoDbApi1'"
 		},
+		"CosmosDbMongoDbApi2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CosmosDbMongoDbApi2'"
+		},
+		"linkedService1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'linkedService1'"
+		},
+		"FileShare1_properties_typeProperties_fileName": {
+			"type": "string",
+			"defaultValue": "Sample1.csv"
+		},
+		"FileShare1_properties_typeProperties_folderPath": {
+			"type": "string",
+			"defaultValue": "source/D2"
+		},
 		"SourceDataset_0al_properties_typeProperties_fileName": {
 			"type": "string",
 			"defaultValue": "SampleDaily_20181207.csv"
@@ -45,7 +61,7 @@
 		},
 		"SourceDataset_xo4_properties_typeProperties_fileName": {
 			"type": "string",
-			"defaultValue": "SampleDaily_20181207.csv"
+			"defaultValue": "SampleDaily_20190111_1.txt"
 		},
 		"SourceDataset_xo4_properties_typeProperties_folderPath": {
 			"type": "string",
@@ -70,6 +86,14 @@
 		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "cdmsDB"
+		},
+		"CosmosDbMongoDbApi2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "cdmsDB"
+		},
+		"linkedService1_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "cdmsstorageaccnt"
 		}
 	},
 	"variables": {
@@ -248,6 +272,71 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "FileSystemSource",
+								"recursive": true
+							},
+							"sink": {
+								"type": "CosmosDbMongoDbApiSink",
+								"writeBatchTimeout": "00:30:00",
+								"writeBatchSize": 10000,
+								"writeBehavior": "insert"
+							},
+							"enableStaging": false,
+							"enableSkipIncompatibleRow": true,
+							"dataIntegrationUnits": 0,
+							"translator": {
+								"type": "TabularTranslator",
+								"schemaMapping": {
+									"Id1": "Id1",
+									"Id2": "Id2",
+									"Id3": "Id3",
+									"Operation": "Operation"
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "FileShare1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "CosmosDbMongoDbApiCollection1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/FileShare1')]",
+				"[concat(variables('factoryId'), '/datasets/CosmosDbMongoDbApiCollection1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_xo4')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy_xo4",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
 						"userProperties": [
 							{
 								"name": "Source",
@@ -255,7 +344,7 @@
 							},
 							{
 								"name": "Destination",
-								"value": "mscicdmscollection"
+								"value": "TestCollection"
 							}
 						],
 						"typeProperties": {
@@ -365,161 +454,6 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SourceDataset_r2p",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DestinationDataset_r2p",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_r2p')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_r2p')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CopyPipeline_xo4')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy_xo4",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "cdmscontainer/SampleDaily_20181207.csv"
-							},
-							{
-								"name": "Destination",
-								"value": "mscicdmscollection"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "BlobSource",
-								"recursive": false
-							},
-							"sink": {
-								"type": "CosmosDbMongoDbApiSink",
-								"writeBatchTimeout": "00:30:00",
-								"writeBatchSize": 10000,
-								"writeBehavior": "insert"
-							},
-							"enableStaging": false,
-							"enableSkipIncompatibleRow": true,
-							"dataIntegrationUnits": 0,
-							"translator": {
-								"type": "TabularTranslator",
-								"schemaMapping": {
-									"Prop_0": "STATUS",
-									"Prop_1": "ISIN",
-									"Prop_2": "INST_TYPE",
-									"Prop_3": "TYPE_CODE",
-									"Prop_4": "ID",
-									"Prop_5": "NAME",
-									"Prop_6": "POS_UNIT",
-									"Prop_7": "PORTFOLIO",
-									"Prop_8": "SECTOR",
-									"Prop_9": "ISSUER",
-									"Prop_10": "COUNTERPARTY",
-									"Prop_11": "COUNTRY_OF_RISK",
-									"Prop_12": "CURR",
-									"Prop_13": "SPOT",
-									"Prop_14": "COST_OF_CARRY",
-									"Prop_15": "CASHFLOW",
-									"Prop_16": "STRIKE",
-									"Prop_17": "CONTRACT_SIZE",
-									"Prop_18": "ISSUE_DATE",
-									"Prop_19": "MATURITY",
-									"Prop_20": "CALL",
-									"Prop_21": "VOLATILITY",
-									"Prop_22": "UNDERLYING",
-									"Prop_23": "GOVERNMENT_BOND",
-									"Prop_24": "COUPON_RATE",
-									"Prop_25": "LAST_REG_COUP_DATE",
-									"Prop_26": "ODD_FIRST_COUP",
-									"Prop_27": "ODD_LAST_COUP",
-									"Prop_28": "ODD_FIRST_COUP_RATE",
-									"Prop_29": "TERM",
-									"Prop_30": "BUSINESS_DAY_RULE",
-									"Prop_31": "FLOAT_REF_IDX",
-									"Prop_32": "SPREAD",
-									"Prop_33": "LAST_RESET_RATE",
-									"Prop_34": "NOTIONAL",
-									"Prop_35": "UNDERL_MATURITY",
-									"Prop_36": "UNDERL_ENTITIES",
-									"Prop_37": "COMP_WEIGHT",
-									"Prop_38": "STRUCTURED_CASHFLOW",
-									"Prop_39": "REF_TYPE",
-									"Prop_40": "SWAP_NOTIONAL",
-									"Prop_41": "FIX_COUP_DATE",
-									"Prop_42": "PREMIUM_START",
-									"Prop_43": "PREMIUM_END",
-									"Prop_44": "NOTIONAL_START",
-									"Prop_45": "NOTIONAL_END",
-									"Prop_46": "EXERCISE_SCHEDULE",
-									"Prop_47": "PUTABLE",
-									"Prop_48": "CORRELATION",
-									"Prop_49": "CONV_PRICE",
-									"Prop_50": "CONV_START_DATE",
-									"Prop_51": "CONV_END_DATE",
-									"Prop_52": "REDEMPTION_BARRIER",
-									"Prop_53": "CTD_BOND",
-									"Prop_54": "EURO_VALUE",
-									"Prop_55": "KAG_FX",
-									"Prop_56": "RECOVERY_RATE",
-									"Prop_57": "AMORTIZING",
-									"Prop_58": "RATING",
-									"Prop_59": "FACTOR",
-									"Prop_60": "INFO",
-									"Prop_61": "PREMIUM",
-									"Prop_62": "CALLABLE",
-									"Prop_63": "STRIKE_BOND_CALL",
-									"Prop_64": "REDEMPTION_REFERENCE",
-									"Prop_65": "CONVERTIBLE_AFTER_CALL",
-									"Prop_66": "CALL_DATE",
-									"Prop_67": "CALL_TYPE",
-									"Prop_68": "EXCHANGEABLE",
-									"Prop_69": "NOTIONAL_PER_BOND",
-									"Prop_70": "BARRIER",
-									"Prop_71": "BARRIER_HIT",
-									"Prop_72": "REBATE",
-									"Prop_73": "PUT_TYPE",
-									"Prop_74": "WAL",
-									"Prop_75": "POOLFACTOR",
-									"Prop_76": "FIXINGS_SO_FAR",
-									"Prop_77": "FIXINGS_TOTAL",
-									"Prop_78": "FIXING_PERIOD",
-									"Prop_79": "FIXINGS",
-									"Prop_80": "DIGITAL",
-									"Prop_81": "DIGITAL_PAYOFF",
-									"Prop_82": "VV_NAME",
-									"Prop_83": "OPTION_SCHEDULE",
-									"Prop_84": "RIC"
-								}
-							}
-						},
-						"inputs": [
-							{
 								"referenceName": "SourceDataset_xo4",
 								"type": "DatasetReference",
 								"parameters": {}
@@ -534,8 +468,8 @@
 						]
 					},
 					{
-						"name": "Custom1",
-						"type": "Custom",
+						"name": "Web1",
+						"type": "WebActivity",
 						"dependsOn": [
 							{
 								"activity": "Copy_xo4",
@@ -553,20 +487,11 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"command": "RENAME SampleDaily_20181207.csv SampleDaily_20181207_processed.csv",
-							"resourceLinkedService": {
-								"referenceName": "AzureBlobStorage1",
-								"type": "LinkedServiceReference"
-							},
-							"folderPath": "cdmscontainer",
-							"referenceObjects": {
-								"linkedServices": [],
-								"datasets": []
+							"url": "https://msciftp.azurewebsites.net/api/ftp",
+							"method": "GET",
+							"headers": {
+								"fileName": "SampleFile.csv"
 							}
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureBatch2",
-							"type": "LinkedServiceReference"
 						}
 					}
 				],
@@ -574,71 +499,26 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_xo4')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_xo4')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureBatch2')]"
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_xo4')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/CosmosDbMongoDbApiCollection1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "Web1",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
-							"method": "GET",
-							"headers": {},
-							"linkedServices": [],
-							"datasets": []
-						}
-					},
-					{
-						"name": "Azure Function1",
-						"type": "AzureFunctionActivity",
-						"dependsOn": [
-							{
-								"activity": "Web1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"functionName": "ftp",
-							"method": "GET",
-							"headers": {}
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureFunction1",
-							"type": "LinkedServiceReference"
-						}
-					}
-				],
-				"annotations": []
+				"linkedServiceName": {
+					"referenceName": "CosmosDbMongoDbApi2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "CosmosDbMongoDbApiCollection",
+				"typeProperties": {
+					"collection": "Test"
+				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]"
+				"[concat(variables('factoryId'), '/linkedServices/CosmosDbMongoDbApi2')]"
 			]
 		},
 		{
@@ -691,11 +571,58 @@
 				"annotations": [],
 				"type": "CosmosDbMongoDbApiCollection",
 				"typeProperties": {
-					"collection": "mscicdmscollection"
+					"collection": "TestCollection"
 				}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/CosmosDbMongoDbApi1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FileShare1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "linkedService1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "FileShare",
+				"structure": [
+					{
+						"name": "Id1",
+						"type": "String"
+					},
+					{
+						"name": "Id2",
+						"type": "String"
+					},
+					{
+						"name": "Id3",
+						"type": "String"
+					},
+					{
+						"name": "Operation",
+						"type": "String"
+					}
+				],
+				"typeProperties": {
+					"format": {
+						"type": "TextFormat",
+						"columnDelimiter": ",",
+						"rowDelimiter": "",
+						"nullValue": "\\N",
+						"treatEmptyAsNull": true,
+						"skipLineCount": 0,
+						"firstRowAsHeader": false
+					},
+					"fileName": "[parameters('FileShare1_properties_typeProperties_fileName')]",
+					"folderPath": "[parameters('FileShare1_properties_typeProperties_folderPath')]"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/linkedService1')]"
 			]
 		},
 		{
@@ -1904,6 +1831,38 @@
 				"typeProperties": {
 					"connectionString": "[parameters('CosmosDbMongoDbApi1_connectionString')]",
 					"database": "[parameters('CosmosDbMongoDbApi1_properties_typeProperties_database')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CosmosDbMongoDbApi2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "CosmosDbMongoDbApi",
+				"typeProperties": {
+					"connectionString": "[parameters('CosmosDbMongoDbApi2_connectionString')]",
+					"database": "[parameters('CosmosDbMongoDbApi2_properties_typeProperties_database')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/linkedService1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "\\\\cdmsstorageaccnt.file.core.windows.net\\sourceftp",
+					"userId": "[parameters('linkedService1_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('linkedService1_password')]"
+					}
 				}
 			},
 			"dependsOn": []

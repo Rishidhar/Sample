@@ -20,6 +20,18 @@
 		"CosmosDbMongoDbApi1_connectionString": {
 			"value": ""
 		},
+		"CosmosDbMongoDbApi2_connectionString": {
+			"value": ""
+		},
+		"linkedService1_password": {
+			"value": ""
+		},
+		"FileShare1_properties_typeProperties_fileName": {
+			"value": "Sample1.csv"
+		},
+		"FileShare1_properties_typeProperties_folderPath": {
+			"value": "source/D2"
+		},
 		"SourceDataset_0al_properties_typeProperties_fileName": {
 			"value": "SampleDaily_20181207.csv"
 		},
@@ -33,7 +45,7 @@
 			"value": "cdmscontainer"
 		},
 		"SourceDataset_xo4_properties_typeProperties_fileName": {
-			"value": "SampleDaily_20181207.csv"
+			"value": "SampleDaily_20190111_1.txt"
 		},
 		"SourceDataset_xo4_properties_typeProperties_folderPath": {
 			"value": "cdmscontainer"
@@ -52,6 +64,12 @@
 		},
 		"CosmosDbMongoDbApi1_properties_typeProperties_database": {
 			"value": "cdmsDB"
+		},
+		"CosmosDbMongoDbApi2_properties_typeProperties_database": {
+			"value": "cdmsDB"
+		},
+		"linkedService1_properties_typeProperties_userId": {
+			"value": "cdmsstorageaccnt"
 		}
 	}
 }
