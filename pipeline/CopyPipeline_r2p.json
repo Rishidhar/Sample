@@ -29,10 +29,10 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"schemaMapping": {
-							"Id2": "STATUS",
-							"Id3": "ISIN",
-							"Operation": "INST_TYPE",
-							"Id1": "TYPE_CODE"
+							"Id1": "Id1",
+							"Id2": "Id2",
+							"Id3": "Id3",
+							"Operation": "Operation"
 						}
 					}
 				},
