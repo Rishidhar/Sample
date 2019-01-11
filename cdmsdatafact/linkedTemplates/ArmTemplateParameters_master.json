@@ -70,6 +70,12 @@
 		},
 		"linkedService1_properties_typeProperties_userId": {
 			"value": "cdmsstorageaccnt"
+		},
+		"AzureBlob1_properties_typeProperties_fileName": {
+			"value": "SampleDaily_20190111_1.txt"
+		},
+		"AzureBlob1_properties_typeProperties_folderPath": {
+			"value": "cdmscontainer"
 		}
 	}
 }
