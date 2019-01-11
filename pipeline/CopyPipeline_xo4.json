@@ -3,7 +3,25 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_xo4",
+				"name": "Web1",
+				"type": "WebActivity",
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"typeProperties": {
+					"url": "https://msciftp.azurewebsites.net/api/ftp",
+					"method": "GET",
+					"headers": {
+						"fileName": "SampleFile.csv"
+					}
+				}
+			},
+			{
+				"name": "Copy Data1",
 				"type": "Copy",
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -12,20 +30,10 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "Source",
-						"value": "cdmscontainer/SampleDaily_20181207.csv"
-					},
-					{
-						"name": "Destination",
-						"value": "TestCollection"
-					}
-				],
 				"typeProperties": {
 					"source": {
 						"type": "BlobSource",
-						"recursive": false
+						"recursive": true
 					},
 					"sink": {
 						"type": "CosmosDbMongoDbApiSink",
@@ -34,11 +42,26 @@
 						"writeBehavior": "insert"
 					},
 					"enableStaging": false,
-					"enableSkipIncompatibleRow": true,
 					"dataIntegrationUnits": 0,
 					"translator": {
 						"type": "TabularTranslator",
 						"schemaMapping": {
+							"Prop_0": "Prop_0",
+							"Prop_1": "Prop_1",
+							"Prop_2": "Prop_2",
+							"Prop_3": "Prop_3",
+							"Prop_4": "Prop_4",
+							"Prop_5": "Prop_5",
+							"Prop_6": "Prop_6",
+							"Prop_7": "Prop_7",
+							"Prop_8": "Prop_8",
+							"Prop_9": "Prop_9",
+							"Prop_10": "Prop_10",
+							"Prop_11": "Prop_11",
+							"Prop_12": "Prop_12",
+							"Prop_13": "Prop_13",
+							"Prop_14": "Prop_14",
+							"Prop_15": "Prop_15",
 							"Prop_16": "Prop_16",
 							"Prop_17": "Prop_17",
 							"Prop_18": "Prop_18",
@@ -123,32 +146,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Web1",
-				"type": "WebActivity",
-				"dependsOn": [
-					{
-						"activity": "Copy_xo4",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"typeProperties": {
-					"url": "https://msciftp.azurewebsites.net/api/ftp",
-					"method": "GET",
-					"headers": {
-						"fileName": "SampleFile.csv"
-					}
-				}
 			}
 		]
 	},
