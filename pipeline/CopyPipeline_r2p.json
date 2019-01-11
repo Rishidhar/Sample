@@ -25,17 +25,17 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"schemaMapping": {
-							"Prop_0": "Prop_0",
-							"Prop_1": "Prop_1",
-							"Prop_2": "Prop_2",
-							"Prop_3": "Prop_3",
-							"Prop_4": "Prop_4",
-							"Prop_5": "Prop_5",
-							"Prop_6": "Prop_6",
-							"Prop_7": "Prop_7",
-							"Prop_8": "Prop_8",
-							"Prop_9": "Prop_9",
-							"Prop_10": "Prop_10"
+							"Prop_0": "_id['$oid']",
+							"Prop_1": "STATUS",
+							"Prop_2": "ISIN",
+							"Prop_3": "INST_TYPE",
+							"Prop_4": "TYPE_CODE",
+							"Prop_5": "ID",
+							"Prop_6": "NAME",
+							"Prop_7": "POS_UNIT",
+							"Prop_8": "PORTFOLIO",
+							"Prop_9": "SECTOR",
+							"Prop_10": "ISSUER"
 						}
 					}
 				},
