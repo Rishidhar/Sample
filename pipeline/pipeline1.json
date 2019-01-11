@@ -151,7 +151,7 @@
 					"url": "https://msciftp.azurewebsites.net/api/ftp",
 					"method": "GET",
 					"headers": {
-						"fileName": "SampleFile.csv"
+						"name": "SampleFile.csv"
 					}
 				}
 			}
