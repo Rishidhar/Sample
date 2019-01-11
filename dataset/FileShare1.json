@@ -8,47 +8,19 @@
 		"type": "FileShare",
 		"structure": [
 			{
-				"name": "Prop_0",
+				"name": "Id1",
 				"type": "String"
 			},
 			{
-				"name": "Prop_1",
+				"name": "Id2",
 				"type": "String"
 			},
 			{
-				"name": "Prop_2",
+				"name": "Id3",
 				"type": "String"
 			},
 			{
-				"name": "Prop_3",
-				"type": "String"
-			},
-			{
-				"name": "Prop_4",
-				"type": "String"
-			},
-			{
-				"name": "Prop_5",
-				"type": "String"
-			},
-			{
-				"name": "Prop_6",
-				"type": "String"
-			},
-			{
-				"name": "Prop_7",
-				"type": "String"
-			},
-			{
-				"name": "Prop_8",
-				"type": "String"
-			},
-			{
-				"name": "Prop_9",
-				"type": "String"
-			},
-			{
-				"name": "Prop_10",
+				"name": "Operation",
 				"type": "String"
 			}
 		],
