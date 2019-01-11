@@ -23,10 +23,6 @@
 					}
 				],
 				"typeProperties": {
-					"source": {
-						"type": "BlobSource",
-						"recursive": false
-					},
 					"sink": {
 						"type": "CosmosDbMongoDbApiSink",
 						"writeBatchTimeout": "00:30:00",
@@ -129,7 +125,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_r2p",
+						"referenceName": "FileShare1",
 						"type": "DatasetReference"
 					}
 				],
