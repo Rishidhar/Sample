@@ -14,7 +14,7 @@
 				"nullValue": "\\N",
 				"treatEmptyAsNull": true,
 				"skipLineCount": 0,
-				"firstRowAsHeader": false
+				"firstRowAsHeader": true
 			},
 			"fileName": "SampleDaily_20190111_1.txt",
 			"folderPath": "cdmscontainer"
