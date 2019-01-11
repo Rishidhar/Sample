@@ -13,8 +13,11 @@
 					"secureInput": false
 				},
 				"typeProperties": {
-					"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
-					"method": "GET"
+					"url": "https://msciftp.azurewebsites.net/api/ftp",
+					"method": "GET",
+					"headers": {
+						"fileName": "SampleFile.csv"
+					}
 				}
 			}
 		]
