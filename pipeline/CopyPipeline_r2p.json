@@ -25,16 +25,15 @@
 					"translator": {
 						"type": "TabularTranslator",
 						"schemaMapping": {
-							"Prop_0": "_id['$oid']",
 							"Prop_1": "STATUS",
 							"Prop_2": "ISIN",
 							"Prop_3": "INST_TYPE",
-							"Prop_4": "TYPE_CODE",
+							"Prop_4": "CURR",
 							"Prop_5": "ID",
 							"Prop_6": "NAME",
 							"Prop_7": "POS_UNIT",
 							"Prop_8": "PORTFOLIO",
-							"Prop_9": "SECTOR",
+							"Prop_0": "SECTOR",
 							"Prop_10": "ISSUER"
 						}
 					}
