@@ -7,7 +7,7 @@
 		},
 		"type": "CosmosDbMongoDbApiCollection",
 		"typeProperties": {
-			"collection": "NewCollection1"
+			"collection": "MsciCollection"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
