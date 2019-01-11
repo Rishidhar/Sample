@@ -131,7 +131,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_r2p",
+						"referenceName": "CosmosDbMongoDbApiCollection1",
 						"type": "DatasetReference"
 					}
 				]
