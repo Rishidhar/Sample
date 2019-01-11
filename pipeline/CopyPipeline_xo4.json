@@ -141,8 +141,8 @@
 				]
 			},
 			{
-				"name": "Custom1",
-				"type": "Custom",
+				"name": "Web1",
+				"type": "WebActivity",
 				"dependsOn": [
 					{
 						"activity": "Copy_xo4",
@@ -159,16 +159,8 @@
 					"secureInput": false
 				},
 				"typeProperties": {
-					"command": "RENAME SampleDaily_20181207.csv SampleDaily_20181207_processed.csv",
-					"resourceLinkedService": {
-						"referenceName": "AzureBlobStorage1",
-						"type": "LinkedServiceReference"
-					},
-					"folderPath": "cdmscontainer"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureBatch2",
-					"type": "LinkedServiceReference"
+					"url": "https://msciftp.azurewebsites.net/api/ftp?fileName=SampleFile.csv",
+					"method": "GET"
 				}
 			}
 		]
